@@ -1,0 +1,33 @@
+<html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<body>
+<div class="container" id="app">
+    <label><input type="checkbox" name="orange" v-on:click="fetchOrange">Оранжевый кед</label>
+    <label><input type="checkbox" name="gantt" v-on:click="drawGantt">Диаграмма Ганта</label>
+    <div id="orange">
+        <table>
+            <thead>
+            <th>Показывать на диаграмме</th>
+            <th>Дата начала</th>
+            <th>Дата окончания</th>
+            <th>Название</th>
+            </thead>
+            <tbody v-for="tour in orange.tours">
+            <tr>
+                <td><input type="checkbox" checked v-on:click="hideTour(tour)"></td>
+                <td>{{ tour.start.toLocaleDateString("ru") }}</td>
+                <td>{{ tour.end.toLocaleDateString("ru") }}</td>
+                <td>{{ tour.title }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div id="gantt"></div>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
